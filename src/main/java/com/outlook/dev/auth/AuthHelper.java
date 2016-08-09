@@ -137,7 +137,7 @@ public class AuthHelper {
 	public static TokenResponse ensureTokens(TokenResponse tokens, String tenantId) {
 		// Are tokens still valid?
 		Calendar now = Calendar.getInstance();
-		if (now.getTime().after(tokens.getExpirationTime())) {
+		if (now.getTime().before(tokens.getExpirationTime())) {
 			// Still valid, return them as-is
 			return tokens;
 		}
